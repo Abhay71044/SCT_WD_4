@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <meta name="description" content="A simple and organized to-do list application">
+    <link rel="stylesheet" href="todo-styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="app-title">📝 My To-Do Lists</h1>
+            <p class="app-subtitle">Stay organized and productive</p>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Sidebar - Lists Panel -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>My Lists</h2>
+                    <button id="add-list-btn" class="btn-icon" title="Add new list">+</button>
+                </div>
+
+                <!-- Lists Container -->
+                <div id="lists-container" class="lists-container">
+                    <!-- Lists will be dynamically added here -->
+                </div>
+
+                <!-- Add New List Form -->
+                <div id="new-list-form" class="new-list-form hidden">
+                    <input 
+                        type="text" 
+                        id="new-list-input" 
+                        class="input-field"
+                        placeholder="List name..." 
+                        maxlength="30"
+                    >
+                    <div class="form-actions">
+                        <button id="save-list-btn" class="btn btn-primary btn-sm">Save</button>
+                        <button id="cancel-list-btn" class="btn btn-secondary btn-sm">Cancel</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Tasks Panel -->
+            <main class="tasks-panel">
+                <!-- Tasks Header -->
+                <div class="tasks-header">
+                    <div class="header-top">
+                        <h2 id="current-list-title" class="list-title">Select a list</h2>
+                        <button id="delete-list-btn" class="btn-icon btn-danger" title="Delete list">🗑️</button>
+                    </div>
+
+                    <!-- Search and Filter Bar -->
+                    <div class="search-filter-bar">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="input-field search-input"
+                            placeholder="Search tasks..."
+                        >
+                        <div class="filter-group">
+                            <select id="sort-select" class="select-field">
+                                <option value="date-created">Sort by Created</option>
+                                <option value="due-date">Sort by Due Date</option>
+                                <option value="title">Sort by Title</option>
+                            </select>
+                            <select id="filter-select" class="select-field">
+                                <option value="all">All Tasks</option>
+                                <option value="active">Active</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Add Task Button -->
+                    <button id="add-task-btn" class="btn btn-primary add-task-btn">
+                        + Add New Task
+                    </button>
+                </div>
+
+                <!-- Add/Edit Task Form -->
+                <div id="task-form" class="task-form hidden">
+                    <h3 id="form-title" class="form-title">New Task</h3>
+                    <div class="form-group">
+                        <label for="task-title-input">Title *</label>
+                        <input 
+                            type="text" 
+                            id="task-title-input" 
+                            class="input-field"
+                            placeholder="Task title..."
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="task-desc-input">Description</label>
+                        <textarea 
+                            id="task-desc-input" 
+                            class="textarea-field"
+                            placeholder="Task description..."
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-date-input">Due Date</label>
+                        <input 
+                            type="datetime-local" 
+                            id="task-date-input" 
+                            class="input-field"
+                        >
+                    </div>
+                    <div class="form-actions">
+                        <button id="save-task-btn" class="btn btn-primary">Save Task</button>
+                        <button id="cancel-task-btn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Tasks List Container -->
+                <div id="tasks-container" class="tasks-container">
+                    <!-- Tasks will be dynamically added here -->
+                    <div class="empty-state">
+                        <p class="empty-icon">📋</p>
+                        <p class="empty-text">No tasks yet. Create a list and add your first task!</p>
+                    </div>
+                </div>
+
+                <!-- Task Stats -->
+                <div id="task-stats" class="task-stats hidden">
+                    <span id="stats-total">0 tasks</span>
+                    <span class="stats-separator">•</span>
+                    <span id="stats-completed">0 completed</span>
+                    <span class="stats-separator">•</span>
+                    <span id="stats-active">0 active</span>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="todo-script.js"></script>
+</body>
+</html>
